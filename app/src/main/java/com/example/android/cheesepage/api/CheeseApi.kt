@@ -20,6 +20,9 @@ import androidx.annotation.WorkerThread
 import com.example.android.cheesepage.vo.Cheese
 import kotlin.math.absoluteValue
 
+/**
+ * A dummy network API.
+ */
 class CheeseApi(private val names: List<String> = CHEESE_NAMES) {
 
     internal var dummySleepInterval = 1000L
@@ -29,7 +32,7 @@ class CheeseApi(private val names: List<String> = CHEESE_NAMES) {
         if (startIndex >= names.size) {
             return emptyList()
         }
-        // This API is slow.
+        // Simulate slow network.
         Thread.sleep(dummySleepInterval)
         return (startIndex until Math.min(startIndex + size, names.size)).map { index ->
             val name = names[index]

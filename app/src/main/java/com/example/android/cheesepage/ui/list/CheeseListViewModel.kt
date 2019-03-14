@@ -18,28 +18,14 @@ package com.example.android.cheesepage.ui.list
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.paging.PagedList
-import androidx.paging.toLiveData
 import com.example.android.cheesepage.repository.CheeseRepository
-import com.example.android.cheesepage.vo.CheeseSummary
-import java.util.concurrent.atomic.AtomicBoolean
 
 class CheeseListViewModel @JvmOverloads constructor(
     application: Application,
     repository: CheeseRepository = CheeseRepository.getInstance(application)
 ) : AndroidViewModel(application) {
 
-    val cheeses = repository.listCheeses().toLiveData(
-        pageSize = CheeseRepository.PAGE_SIZE,
-        boundaryCallback = object : PagedList.BoundaryCallback<CheeseSummary>() {
-            private val loading = AtomicBoolean(false)
-            override fun onItemAtEndLoaded(itemAtEnd: CheeseSummary) {
-                if (loading.compareAndSet(false, true)) {
-                    repository.sync((itemAtEnd.id + 1).toInt())
-                    loading.set(false)
-                }
-            }
-        })
+    val cheeses = repository.listCheeses()
 
     init {
         repository.initialize()

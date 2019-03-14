@@ -43,9 +43,12 @@ class CheeseListFragment : Fragment() {
             CheeseDetailFragment.newInstance(cheese.id).show(fragmentManager, FRAGMENT_CHEESE_DETAIL)
         }
         val viewModel = ViewModelProviders.of(this).get(CheeseListViewModel::class.java)
+
+        // This is the LiveData of PagedList. It can be observed just like a normal LiveData of List.
         viewModel.cheeses.observe(viewLifecycleOwner, Observer { cheeses ->
             cheeseAdapter.submitList(cheeses)
         })
+
         (view.findViewById(R.id.cheese_list) as RecyclerView).run {
             layoutManager = LinearLayoutManager(view.context)
             setHasFixedSize(true)

@@ -18,4 +18,5 @@
     <string name="app_name">CheesePage</string>
     <string name="description_rating_negative">Bad</string>
     <string name="description_rating_positive">Good</string>
+    <string name="cheese_name_placeholder">……</string>
 </resources>

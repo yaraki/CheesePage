@@ -90,7 +90,7 @@
         style="?attr/buttonBarPositiveButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/description_rating_negative"
+        android:contentDescription="@string/description_rating_positive"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

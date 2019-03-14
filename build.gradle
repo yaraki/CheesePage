@@ -31,7 +31,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        // For "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.0.5" required by Room 2.1.0-alpha5
+        maven { url 'https://dl.bintray.com/kotlin/kotlinx/' }
     }
 }
 

@@ -45,10 +45,11 @@ class CheeseAdapter(
     }
 
     override fun onBindViewHolder(holder: CheeseViewHolder, position: Int) {
-        val cheese = getItem(position)
+        val cheese: CheeseSummary? = getItem(position)
         if (cheese == null) {
-            holder.icon.setImageDrawable(null)
-            holder.name.text = "……"
+            // The item is not loaded yet; show a placeholder.
+            Glide.with(holder.icon).load(R.drawable.gray).apply(RequestOptions.circleCropTransform()).into(holder.icon)
+            holder.name.setText(R.string.cheese_name_placeholder)
             holder.rating.visibility = View.GONE
         } else {
             Glide.with(holder.icon).load(cheese.imageUrl).apply(RequestOptions.circleCropTransform()).into(holder.icon)
