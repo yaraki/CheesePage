@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2019 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cheese_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="UnusedAttribute">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/half_icon_size"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:gravity="center_horizontal|bottom"
+        android:paddingTop="@dimen/half_icon_size_plus_small"
+        android:paddingBottom="@dimen/spacing_small"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Cheese" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:contentDescription="@null"
+        android:elevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f6f6f6"
+        android:padding="@dimen/spacing_medium"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        tools:text="It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today. It is fine today." />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#f6f6f6"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/rating_negative"
+        app:layout_constraintEnd_toEndOf="@id/rating_positive"
+        app:layout_constraintStart_toStartOf="@id/rating_negative"
+        app:layout_constraintTop_toTopOf="@id/rating_negative" />
+
+    <ImageButton
+        android:id="@+id/rating_negative"
+        style="?attr/buttonBarNegativeButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/description_rating_negative"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/rating_positive"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:srcCompat="@drawable/ic_thumb_down" />
+
+    <ImageButton
+        android:id="@+id/rating_positive"
+        style="?attr/buttonBarPositiveButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/description_rating_positive"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/rating_negative"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:srcCompat="@drawable/ic_thumb_up" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
