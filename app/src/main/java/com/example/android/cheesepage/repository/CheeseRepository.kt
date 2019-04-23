@@ -54,7 +54,7 @@ class CheeseRepository(
         return db.cheese().all().toLiveData(
 
             // The number of items in one page.
-            pageSize = CheeseRepository.PAGE_SIZE,
+            pageSize = PAGE_SIZE,
 
             // This callback is called when the UI needs more items to show.
             boundaryCallback = object : PagedList.BoundaryCallback<CheeseSummary>() {
@@ -70,9 +70,7 @@ class CheeseRepository(
 
                         // This fetches data from the network API and inserts them into the database, invalidating
                         // this DataSource. After that, PagedList DataSource.Factory will create a new DataSource.
-                        sync((itemAtEnd.id + 1).toInt())
-
-                        loading.set(false)
+                        sync((itemAtEnd.id + 1).toInt(), loading)
                     }
                 }
             }
@@ -108,10 +106,14 @@ class CheeseRepository(
 
     /**
      * Sync a page of cheeses specified by [startIndex].
+     *
+     * @param startIndex The index of the first item to be loaded.
+     * @param loading The method sets this value to `false` when the loading is done.
      */
-    fun sync(startIndex: Int) {
+    fun sync(startIndex: Int, loading: AtomicBoolean? = null) {
         executor.execute {
             db.cheese().insert(api.fetchPage(startIndex = startIndex, size = PAGE_SIZE))
+            loading?.set(false)
         }
     }
 

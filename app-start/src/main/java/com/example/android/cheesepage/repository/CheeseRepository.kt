@@ -88,10 +88,14 @@ class CheeseRepository(
 
     /**
      * Sync a page of cheeses specified by [startIndex].
+     *
+     * @param startIndex The index of the first item to be loaded.
+     * @param loading The method sets this value to `false` when the loading is done.
      */
-    fun sync(startIndex: Int) {
+    fun sync(startIndex: Int, loading: AtomicBoolean? = null) {
         executor.execute {
             db.cheese().insert(api.fetchPage(startIndex = startIndex, size = PAGE_SIZE))
+            loading?.set(false)
         }
     }
 
